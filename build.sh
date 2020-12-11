@@ -1,6 +1,9 @@
 #!/bin/bash
 
-set -e
+set -ex
+
+# init module system to prevent build fails
+go mod init s3bench || true
 
 now=$(date +'%Y-%m-%d-%T')
 githash=$(git rev-parse HEAD)

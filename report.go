@@ -160,7 +160,6 @@ func (params Params) report() map[string]interface{} {
 	ret["sampleReads"] = params.sampleReads
 	ret["verbose"] = params.verbose
 	ret["headObj"] = params.headObj
-	ret["clientDelay"] = params.clientDelay
 	ret["jsonOutput"] = params.jsonOutput
 	ret["deleteAtOnce"] = params.deleteAtOnce
 	ret["numTags"] = params.numTags
@@ -173,5 +172,17 @@ func (params Params) report() map[string]interface{} {
 	ret["validate"] = params.validate
 	ret["skipWrite"] = params.skipWrite
 	ret["skipRead"] = params.skipRead
+	ret["s3MaxRetries"] = params.s3MaxRetries
+	ret["s3Disable100Continue"] = params.s3Disable100Continue
+	ret["httpClientTimeout"] = params.httpClientTimeout
+	ret["connectTimeout"] = params.connectTimeout
+	ret["TLSHandshakeTimeout"] = params.TLSHandshakeTimeout
+	ret["maxIdleConnsPerHost"] = params.maxIdleConnsPerHost
+	ret["idleConnTimeout"] = params.idleConnTimeout
+	ret["responseHeaderTimeout"] = params.responseHeaderTimeout
+	ret["deleteClients"] = params.deleteClients
+	ret["protocolDebug"] = params.protocolDebug
+	ret["deleteOnly"] = params.deleteOnly
+	ret["multipartSize"] = params.multipartSize
 	return ret
 }
