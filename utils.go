@@ -48,7 +48,7 @@ func (params Params) printf(f string, args ...interface{}) {
 
 // samples per operation
 func (params Params) spo(op string) uint {
-	if op == opWrite || op == opPutObjTag || op == opValidate {
+	if op == opWrite || op == opPutObjTag || op == opValidate || op == opMpUpl {
 		return params.numSamples
 	}
 
@@ -113,4 +113,12 @@ func (params *Params) getObjectHash(cfg *aws.Config) (string, error){
 	}
 
 	return mm[1], nil
+}
+
+func IntMin(a, b int64) int64 {
+	if a > b {
+		return b
+	}
+
+	return a
 }
