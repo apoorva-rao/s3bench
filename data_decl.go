@@ -14,10 +14,12 @@ const (
 	opGetObjTag = "GetObjTag"
 	opPutObjTag = "PutObjTag"
 	opValidate = "Validate"
+	opMpUpl = "MultipartUpload"
 )
 
 type Req struct {
 	top string
+	key string
 	req interface{}
 }
 
@@ -41,7 +43,6 @@ type Params struct {
 	verbose          bool
 	headObj          bool
 	sampleReads      uint
-	clientDelay      int
 	jsonOutput       bool
 	deleteAtOnce     int
 	putObjTag        bool
@@ -54,6 +55,18 @@ type Params struct {
 	validate         bool
 	skipWrite        bool
 	skipRead         bool
+	s3MaxRetries          int
+	s3Disable100Continue  bool
+	httpClientTimeout     int
+	connectTimeout        int
+	TLSHandshakeTimeout   int
+	maxIdleConnsPerHost   int
+	idleConnTimeout       int
+	responseHeaderTimeout int
+	deleteClients         int
+	protocolDebug         int
+	deleteOnly            bool
+	multipartSize         int64
 }
 
 // Contains the summary for a given test result
@@ -64,4 +77,17 @@ type Result struct {
 	totalDuration    time.Duration
 	opTtfb           []float64
 	opErrors         []string
+}
+
+// Delete op
+type DeleteReq struct {
+	opName  string
+	dltReq  interface{}
+}
+
+// Delete resp
+type DeleteResp struct {
+	opName  string
+	dur     time.Duration
+	err     error
 }
