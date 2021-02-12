@@ -1,5 +1,5 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0def607de884e2098570eae7b3f3e5e)](https://app.codacy.com/gh/Seagate/s3bench?utm_source=github.com&utm_medium=referral&utm_content=Seagate/s3bench&utm_campaign=Badge_Grade_Settings)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/412fa22ba5f8452794584ed9819f149b)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Seagate/s3bench&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0def607de884e2098570eae7b3f3e5e)](https://app.codacy.com/gh/Seagate/s3bench?utm_source=github.com&utm_medium=referral&utm_content=Seagate/s3bench&utm_campaign=Badge_Grade_Settings) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Seagate/s3bench/blob/main/LICENSE) [![Slack](https://img.shields.io/badge/chat-on%20Slack-blue")](https://join.slack.com/t/cortxcommunity/shared_invite/zt-femhm3zm-yiCs5V9NBxh89a_709FFXQ?) [![YouTube](https://img.shields.io/badge/Video-YouTube-red)](https://cortx.link/videos)
+
 
 # Initial
 Cloned from
