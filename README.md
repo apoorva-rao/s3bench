@@ -7,6 +7,13 @@ Cloned from
 https://github.com/igneous-systems/s3bench.git
 ```
 
+# KNOWN LIMITATIONS
+* Latest release
+  [v2021-06-28](https://github.com/Seagate/s3bench/releases/tag/v2021-06-28)
+  is known to have issues with load distribution across multiple endpoints.
+  If you need fair load distribution -- use earlier version:
+  [v2020-04-09](https://github.com/Seagate/s3bench/releases/tag/v2020-04-09).
+
 # S3 Bench
 This tool offers the ability to run very basic throughput benchmarking against
 an S3-compatible endpoint. It does a series of put operations followed by a
