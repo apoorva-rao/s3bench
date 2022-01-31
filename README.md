@@ -24,12 +24,33 @@ uses the AWS Go SDK.
 * Go
 
 ## Installation
-Run the following command to build the binary.
+
+Best way is to download one of pre-created builds, see here:
+https://github.com/Seagate/s3bench/releases
+
+Second-best way is to build yourself:
+
+* check out source code
+* `cd s3bench.git`
+* `./build.sh`
+  * Build may fail due to missing dependencies.  Follow the on-screen
+    instructions to install missing dependencies, then re-run `./build.sh`.
+
+Third way is to build using `go get` approach.
+
+IMPORTANT:
+
+* If you build this way, `--version` will not be able to report actual version
+  (will be reporting dash: `-`).
+* If you build this way, you don't get `s3bench_hash` binary.
+
+To build this way:
 
 ```
-go get github.com/igneous-systems/s3bench
+go get github.com/Seagate/s3bench
 ```
-The binary will be placed under $GOPATH/bin/s3bench.
+
+The binary will be placed under `$GOPATH/bin/s3bench`.
 
 ## Usage
 The s3bench command is self-describing. In order to see all the available options
@@ -43,7 +64,9 @@ The S3 endpoint will be ran against http://endpoint1:80 and
 http://endpoint2:80. Object name will be prefixed with loadgen.
 
 ```
-./s3bench -accessKey=KEY -accessSecret=SECRET -bucket=loadgen -endpoint=http://endpoint1:80,http://endpoint2:80 -numClients=2 -numSamples=10 -objectNamePrefix=loadgen -objectSize=1024
+./s3bench -accessKey=KEY -accessSecret=SECRET -bucket=loadgen \
+  -endpoint=http://endpoint1:80,http://endpoint2:80 \
+  -numClients=2 -numSamples=10 -objectNamePrefix=loadgen -objectSize=1024
 ```
 
 #### Note on regions & endpoints
@@ -145,6 +168,10 @@ Put times Min:       0.001 s
 ##### Head-object
 It is possible to send head-object requests instead of get-object.
 For this purpose one sould use *-metaData* flag
+
 ```
-./s3bench -accessKey=KEY -accessSecret=SECRET -bucket=loadgen -endpoint=http://endpoint1:80 -numClients=2 -numSamples=10 -objectNamePrefix=loadgen -objectSize=1024 -metaData
+./s3bench -accessKey=KEY -accessSecret=SECRET -bucket=loadgen \
+  -endpoint=http://endpoint1:80 \
+  -numClients=2 -numSamples=10 -objectNamePrefix=loadgen -objectSize=1024 \
+  -metaData
 ```
