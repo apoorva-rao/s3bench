@@ -67,6 +67,7 @@ type Params struct {
 	httpClientTimeout     int
 	connectTimeout        int
 	TLSHandshakeTimeout   int
+	insecureSkipVerify    bool
 	maxIdleConnsPerHost   int
 	idleConnTimeout       int
 	responseHeaderTimeout int
