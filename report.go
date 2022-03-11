@@ -288,7 +288,7 @@ func (params Params) report() map[string]interface{} {
 	ret["httpClientTimeout"] = params.httpClientTimeout
 	ret["connectTimeout"] = params.connectTimeout
 	ret["TLSHandshakeTimeout"] = params.TLSHandshakeTimeout
-	ret["insecureSkipVerify"] = params.insecureSkipVerify
+	ret["skipSSLCertVerification"] = params.skipSSLCertVerification
 	ret["maxIdleConnsPerHost"] = params.maxIdleConnsPerHost
 	ret["idleConnTimeout"] = params.idleConnTimeout
 	ret["responseHeaderTimeout"] = params.responseHeaderTimeout
