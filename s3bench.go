@@ -82,7 +82,7 @@ func main() {
 	tagNamePrefix := flag.String("tagNamePrefix", "tag_name_", "prefix of the tag name that will be used")
 	tagValPrefix := flag.String("tagValPrefix", "tag_val_", "prefix of the tag value that will be used")
 	version := flag.Bool("version", false, "print version info")
-	reportFormat := flag.String("reportFormat", "Parameters:label;Parameters:numClients;Parameters:objectSize (MB);Parameters:copies;-Parameters:numSamples;-Parameters:sampleReads;-Parameters:readObj;-Parameters:headObj;-Parameters:putObjTag;-Parameters:getObjTag;-Parameters:TLSHandshakeTimeout;-Parameters:insecureSkipVerify;-Parameters:bucket;-Parameters:connectTimeout;-Parameters:deleteAtOnce;-Parameters:deleteClients;-Parameters:deleteOnly;-Parameters:endpoints;-Parameters:httpClientTimeout;-Parameters:idleConnTimeout;-Parameters:maxIdleConnsPerHost;-Parameters:multipartSize;-Parameters:numTags;-Parameters:objectNamePrefix;-Parameters:protocolDebug;-Parameters:reportFormat;-Parameters:responseHeaderTimeout;-Parameters:s3Disable100Continue;-Parameters:profile;-Parameters:s3MaxRetries;-Parameters:skipRead;-Parameters:skipWrite;-Parameters:tagNamePrefix;-Parameters:tagValPrefix;-Parameters:validate;-Parameters:zero;-Parameters:outstream;-Parameters:outtype;Tests:Operation;Tests:RPS;Tests:Total Requests Count;Tests:Errors Count;Tests:Total Throughput (MB/s);Tests:Total Duration (s);Tests:Total Transferred (MB);Tests:Duration Max;Tests:Duration Avg;Tests:Duration Min;Tests:Ttfb Max;Tests:Ttfb Avg;Tests:Ttfb Min;-Tests:Duration 25th-ile;-Tests:Duration 50th-ile;-Tests:Duration 75th-ile;-Tests:Ttfb 25th-ile;-Tests:Ttfb 50th-ile;-Tests:Ttfb 75th-ile;-Tests:Errors;-Version;", "rearrange output fields")
+	reportFormat := flag.String("reportFormat", "Parameters:label;Parameters:numClients;Parameters:objectSize (MB);Parameters:copies;-Parameters:numSamples;-Parameters:sampleReads;-Parameters:readObj;-Parameters:headObj;-Parameters:putObjTag;-Parameters:getObjTag;-Parameters:TLSHandshakeTimeout;-Parameters:skipSSLCertVerification;-Parameters:bucket;-Parameters:connectTimeout;-Parameters:deleteAtOnce;-Parameters:deleteClients;-Parameters:deleteOnly;-Parameters:endpoints;-Parameters:httpClientTimeout;-Parameters:idleConnTimeout;-Parameters:maxIdleConnsPerHost;-Parameters:multipartSize;-Parameters:numTags;-Parameters:objectNamePrefix;-Parameters:protocolDebug;-Parameters:reportFormat;-Parameters:responseHeaderTimeout;-Parameters:s3Disable100Continue;-Parameters:profile;-Parameters:s3MaxRetries;-Parameters:skipRead;-Parameters:skipWrite;-Parameters:tagNamePrefix;-Parameters:tagValPrefix;-Parameters:validate;-Parameters:zero;-Parameters:outstream;-Parameters:outtype;Tests:Operation;Tests:RPS;Tests:Total Requests Count;Tests:Errors Count;Tests:Total Throughput (MB/s);Tests:Total Duration (s);Tests:Total Transferred (MB);Tests:Duration Max;Tests:Duration Avg;Tests:Duration Min;Tests:Ttfb Max;Tests:Ttfb Avg;Tests:Ttfb Min;-Tests:Duration 25th-ile;-Tests:Duration 50th-ile;-Tests:Duration 75th-ile;-Tests:Ttfb 25th-ile;-Tests:Ttfb 50th-ile;-Tests:Ttfb 75th-ile;-Tests:Errors;-Version;", "rearrange output fields")
 	validate := flag.Bool("validate", false, "validate stored data")
 	skipWrite := flag.Bool("skipWrite", false, "do not run Write test")
 	skipRead := flag.Bool("skipRead", false, "do not run Read test")
@@ -91,7 +91,7 @@ func main() {
 	httpClientTimeout := flag.Int("httpClientTimeout", 0, "Specifies a time limit in Milliseconds for requests made by this Client. The timeout includes connection time, any redirects, and reading the response body. The timer remains running after Get, Head, Post, or Do return and will interrupt reading of the Response.Body. A Timeout of zero means no timeout")
 	connectTimeout := flag.Int("connectTimeout", 0, "Maximum amount of time a dial will wait for a connect to complete. The default is no timeout")
 	TLSHandshakeTimeout := flag.Int("TLSHandshakeTimeout", 0, "Specifies the maximum amount of time waiting to wait for a TLS handshake. Zero means no timeout")
-	insecureSkipVerify := flag.Bool("insecureSkipVerify", false, "Skip SSL certificate verification")
+	skipSSLCertVerification := flag.Bool("skipSSLCertVerification", false, "Skip SSL certificate verification")
 	maxIdleConnsPerHost := flag.Int("maxIdleConnsPerHost", 0, "If non-zero, controls the maximum idle (keep-alive) connections to keep per-host. If zero, system default value is used")
 	idleConnTimeout := flag.Int("idleConnTimeout", 0, "Max amount of time in Milliseconds an idle (keep-alive) connection will remain idle before closing itself. Zero means no limit")
 	responseHeaderTimeout := flag.Int("responseHeaderTimeout", 0, "If non-zero, specifies the amount of time in Milliseconds to wait for a server's response headers after fully writing the request (including its body, if any). This time does not include the time to read the response body")
@@ -215,7 +215,7 @@ func main() {
 		httpClientTimeout:     *httpClientTimeout,
 		connectTimeout:        *connectTimeout,
 		TLSHandshakeTimeout:   *TLSHandshakeTimeout,
-		insecureSkipVerify:    *insecureSkipVerify,
+		skipSSLCertVerification:    *skipSSLCertVerification,
 		maxIdleConnsPerHost:   *maxIdleConnsPerHost,
 		idleConnTimeout:       *idleConnTimeout,
 		responseHeaderTimeout: *responseHeaderTimeout,
@@ -278,7 +278,7 @@ func main() {
 			IdleConnTimeout:       time.Duration(*idleConnTimeout) * time.Millisecond,
 			ResponseHeaderTimeout: time.Duration(*responseHeaderTimeout) * time.Millisecond,
 			TLSClientConfig: &tls.Config {
-				InsecureSkipVerify: *insecureSkipVerify,
+				InsecureSkipVerify: *skipSSLCertVerification,
 			},
 		},
 	}
